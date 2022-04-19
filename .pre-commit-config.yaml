@@ -1,0 +1,119 @@
+exclude: '^$|deploy|scripts|docker|static'
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      # Проверяет наличие переноса строки в конце всех текстовых файлов.
+      - id: end-of-file-fixer
+
+      # Предупреждает о добавлении больших файлов в Git.
+      - id: check-added-large-files
+
+      # Проверяет импорты отладчика и вызовы py37+ "breakpoint()" вызываемых в исходном коде.
+      - id: debug-statements
+
+      # Обрезает пробелы в конце строки.
+      - id: trailing-whitespace
+
+      # Если строка завершается "смешанным" способом (\r\n), то привод к одному.
+      - id: mixed-line-ending
+        args: [ "--fix=lf" ]
+
+      # Проверка синтаксиса yaml фалов.
+      - id: check-yaml
+
+      # Добавляет кодировку в верх файла (С использование ключа --remove - на оборот, удаляет кодировку).
+      - id: fix-encoding-pragma
+        args: [ "--remove" ]
+
+  # Удаляет не используемые импорты и переменные в коде.
+  - repo: https://github.com/myint/autoflake
+    rev: v1.4
+    hooks:
+      - id: autoflake
+        args: [
+          # Вносит изменения в файл вместо вывода "diff".
+          "--in-place",
+          # Удалить все не используемые импорты. (не только стандартную библиотеку).
+          "--remove-all-unused-imports",
+          # Удалить не используемые переменные.
+          "--remove-unused-variable",
+        ]
+
+  # Обновляет синтаксис для до новых версий языка.
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.31.1
+    hooks:
+      - id: pyupgrade
+        args: [ "--py38-plus" ]
+
+  # Сортирует импорты в алфавитном порядке и по типам.
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        args: [ "--src-path=./niflheim" ]
+
+  # Автоматическое добавление конечных запятых к вызовам и литералам.
+  # Полезен при первом использовании, дальше проверяет "flake8-commas"
+  # - repo: https://github.com/asottile/add-trailing-comma
+  #   rev: v2.1.0
+  #   hooks:
+  #     - id: add-trailing-comma
+
+  # Форматирует код в единообразный вид.
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        files: '\.py$'
+
+  # Обеспечивает согласованность стилей в проектах.
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.9.2
+    hooks:
+      - id: flake8
+        args: # arguments to configure flake8
+          # making isort line length compatible with black
+          - "--max-line-length=120"
+          - "--max-complexity=18"
+          - "--select=B,C,E,F,W,T4,B9"
+
+          # these are errors that will be ignored by flake8
+          # check out their meaning here
+          # https://flake8.pycqa.org/en/latest/user/error-codes.html
+          - "--ignore=E203,E266,E501,W503,F403,F401,E402"
+        additional_dependencies: [
+          # Проверят наличие "всеобъемлющих" инструкций except и except Exception.
+          "flake8-blind-except",
+          # Помогает найти структуры где надо добавить запятую в конце.
+          "flake8-commas",
+          # Помогает лучше писать list/set/dict comprehensions.
+          "flake8-comprehensions",
+          # Помогает заменить устаревшие решения на более современные.
+          "flake8-deprecated",
+          # Помогает находить неверные переносы (с использование \).
+          "flake8-broken-line",
+          # Обнаруживает вероятные ошибки и проблемы "дизайна" в программе.
+          "flake8-bugbear",
+          # Помогает писать более аккуратные импорты.
+          "flake8-tidy-imports",
+          # Проверяет код на наличеие операторов печати.
+          "flake8-print",
+          # Проверяет корректность написания сообщений для логирования.
+          "flake8-logging-format",
+          # Проверяет общие проблемы и несоответствия стиля с тестами на основе pytest.
+          "flake8-pytest-style",
+        ]
+
+  # Это инструмент статического анализа кода Python, который ищет ошибки программирования, помогает обеспечить соблюдение стандарта кодирования,
+  # обнаруживает "плохо пахнущий код" и предлагает простые предложения по рефакторингу.
+  # - repo: https://github.com/pre-commit/mirrors-pylint
+  #   rev: v3.0.0a1
+  #   hooks:
+  #     - id: pylint
+  #       args: [
+  #         # only errors
+  #         "-E",
+  #         "--disable=import-error"
+  #       ]

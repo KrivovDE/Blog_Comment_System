@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "krivov"
+version = "0.1.0"
+description = ""
+authors = ["Dmitrii Krivov"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^4.0.4"
+django-cors-headers = "^3.11.0"
+django-environ = "^0.8.1"
+django-filter = "^21.1"
+django-mptt = "^0.13.4"
+django-split-settings = "^1.1.0"
+djangorestframework = "^3.13.1"
+gunicorn = "^20.1.0"
+icecream = "^2.1.2"
+Pillow = "^9.1.0"
+psycopg2-binary = "^2.9.3"
+whitenoise = "^6.0.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.isort]
+line_length = 120
+multi_line_output = 3
+use_parentheses = true
+profile = "black"
+
+[tool.black]
+line-length = 120
+target-version = ['py36', 'py37', 'py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests/",
+]

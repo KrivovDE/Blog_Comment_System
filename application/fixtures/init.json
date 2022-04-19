@@ -1,0 +1,191 @@
+[
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$320000$wNIaSBto6CRYA34iYS0E97$qVWL1SDSOXBEBykzHgzH9rd8EQ1dZoBDc1uulkkb9YA=",
+      "last_login": "2022-04-19T09:40:00Z",
+      "is_superuser": true,
+      "username": "root",
+      "first_name": "root",
+      "last_name": "root",
+      "email": "1@3.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2022-04-19T09:39:47Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "posts.post",
+    "pk": 1,
+    "fields": {
+      "title": "test",
+      "date": "2022-04-19T09:40:18Z",
+      "content": "test",
+      "image": "event_images/cpp-bookflow-768x371.png"
+    }
+  },
+  {
+    "model": "comments.comment",
+    "pk": 1,
+    "fields": {
+      "post": 1,
+      "name": "1-1",
+      "email": "1@3.com",
+      "body": "1@3.com",
+      "created": "2022-04-19T09:40:57.582Z",
+      "updated": "2022-04-19T09:40:57.582Z",
+      "active": true,
+      "parent": null,
+      "lft": 1,
+      "rght": 10,
+      "tree_id": 1,
+      "level": 0
+    }
+  },
+  {
+    "model": "comments.comment",
+    "pk": 2,
+    "fields": {
+      "post": 1,
+      "name": "1-2",
+      "email": "1@3.com",
+      "body": "1@3.com",
+      "created": "2022-04-19T09:41:13.933Z",
+      "updated": "2022-04-19T09:41:13.933Z",
+      "active": true,
+      "parent": 1,
+      "lft": 2,
+      "rght": 9,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "comments.comment",
+    "pk": 3,
+    "fields": {
+      "post": 1,
+      "name": "1-3",
+      "email": "1@3.com",
+      "body": "1@3.com",
+      "created": "2022-04-19T09:41:33.305Z",
+      "updated": "2022-04-19T09:41:33.305Z",
+      "active": true,
+      "parent": 2,
+      "lft": 3,
+      "rght": 8,
+      "tree_id": 1,
+      "level": 2
+    }
+  },
+  {
+    "model": "comments.comment",
+    "pk": 4,
+    "fields": {
+      "post": 1,
+      "name": "1-4",
+      "email": "1@3.com",
+      "body": "1@3.com",
+      "created": "2022-04-19T09:41:53.114Z",
+      "updated": "2022-04-19T09:41:53.114Z",
+      "active": true,
+      "parent": 3,
+      "lft": 4,
+      "rght": 7,
+      "tree_id": 1,
+      "level": 3
+    }
+  },
+  {
+    "model": "comments.comment",
+    "pk": 5,
+    "fields": {
+      "post": 1,
+      "name": "1-5",
+      "email": "1@3.com",
+      "body": "1-5",
+      "created": "2022-04-19T09:42:09.193Z",
+      "updated": "2022-04-19T09:42:09.193Z",
+      "active": true,
+      "parent": 4,
+      "lft": 5,
+      "rght": 6,
+      "tree_id": 1,
+      "level": 4
+    }
+  },
+  {
+    "model": "comments.comment",
+    "pk": 6,
+    "fields": {
+      "post": 1,
+      "name": "2-1",
+      "email": "1@3.com",
+      "body": "1@3.com",
+      "created": "2022-04-19T09:42:22.140Z",
+      "updated": "2022-04-19T09:42:22.140Z",
+      "active": true,
+      "parent": null,
+      "lft": 1,
+      "rght": 8,
+      "tree_id": 2,
+      "level": 0
+    }
+  },
+  {
+    "model": "comments.comment",
+    "pk": 7,
+    "fields": {
+      "post": 1,
+      "name": "2-2",
+      "email": "1@3.com",
+      "body": "2-2",
+      "created": "2022-04-19T09:42:42.751Z",
+      "updated": "2022-04-19T09:42:42.751Z",
+      "active": true,
+      "parent": 6,
+      "lft": 2,
+      "rght": 7,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "comments.comment",
+    "pk": 8,
+    "fields": {
+      "post": 1,
+      "name": "2-3",
+      "email": "1@3.com",
+      "body": "2-3",
+      "created": "2022-04-19T09:43:03.721Z",
+      "updated": "2022-04-19T09:43:03.721Z",
+      "active": true,
+      "parent": 7,
+      "lft": 3,
+      "rght": 6,
+      "tree_id": 2,
+      "level": 2
+    }
+  },
+  {
+    "model": "comments.comment",
+    "pk": 9,
+    "fields": {
+      "post": 1,
+      "name": "2-4",
+      "email": "1@3.com",
+      "body": "2-4",
+      "created": "2022-04-19T09:43:34.994Z",
+      "updated": "2022-04-19T09:43:34.995Z",
+      "active": true,
+      "parent": 8,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 2,
+      "level": 3
+    }
+  }
+]
